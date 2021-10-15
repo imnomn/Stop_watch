@@ -2,155 +2,39 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Timer</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0px;
-            padding: 0px;
-        }
-        
-        body {
-            background-image: linear-gradient(to top right, rgb(50, 140, 146), white);
-            cursor: pointer;
-        }
-        
-        .timer {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        button {
-            width: 60px;
-            height: 30px;
-            margin: 40px;
-        }
-        
-        #minutes,
-        #seconds,
-        #milliseconds {
-            font-size: 4rem;
-            width: 100px;
-            height: 100px;
-            background-color: rgba(255, 255, 255, 0.342);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px;
-            border-radius: 10px;
-        }
-        
-        span {
-            font-size: 5em;
-        }
-        
-        .title {
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 1.5rem;
-        }
-    </style>
+   <title>Timer</title>
+   <link rel="stylesheet" href="styles.css">
 
 </head>
 
 <body>
-    <div class="title">
-        <h4>Click anywhere on screen to Start and Stop</h4>
-        <h4>To Reset, double click </h4>
-    </div>
-    <div class="timer">
-        <div id="minutes">
-            00
-        </div>
-        <span>:</span>
+   <div class="title">
+      <h4>Click anywhere on screen to Start and Stop</h4>
+      <h4>To Reset, double click </h4>
+   </div>
+   <div class="timer">
+      <div id="minutes">
+         00
+      </div>
+      <span>:</span>
 
-        <div id="seconds">
-            00
-        </div>
+      <div id="seconds">
+         00
+      </div>
 
-        <span>:</span>
-        <div id="milliseconds">
-            00
+      <span>:</span>
+      <div id="milliseconds">
+         00
 
-        </div>
+      </div>
 
-    </div>
+   </div>
 
-    <script>
-        var millisecs = 0;
-        var secs = 0;
-        var mins = 0;
-        var start_interval;
-        var test = false;
-
-        function start() {
-
-            millisecs++;
-            if (millisecs == 100) {
-                millisecs = 0;
-                secs++;
-                if (secs == 60) {
-                    secs = 0;
-                    mins++;
-                }
-            }
-
-            if (millisecs < 10) {
-
-                dis_millisecs = "0" + millisecs;
-            } else {
-                dis_millisecs = millisecs;
-            }
-            if (secs < 10) {
-                dis_secs = "0" + secs;
-
-            } else {
-                dis_secs = secs;
-            }
-            if (mins < 10) {
-
-                dis_mins = "0" + mins;
-            } else {
-                dis_mins = mins;
-            }
-
-            document.getElementById("minutes").innerHTML = dis_mins;
-            document.getElementById("seconds").innerHTML = dis_secs;
-            document.getElementById("milliseconds").innerHTML = dis_millisecs;
-            test = true;
-        }
-
-        document.body.addEventListener("click", () => {
-
-            if (!test) {
-                start_interval = setInterval(start, 10);
-            } else {
-                clearInterval(start_interval);
-                test = false;
-            }
-        });
-
-
-        document.body.addEventListener("dblclick", () => {
-
-            clearInterval(start_interval);
-            millisecs = 0;
-            secs = 0;
-            mins = 0;
-            document.getElementById("minutes").innerHTML = "00";
-            document.getElementById("seconds").innerHTML = "00";
-            document.getElementById("milliseconds").innerHTML = "00";
-        });
-    </script>
+   <script src="index.js"></script>
 
 </body>
 
